@@ -25,21 +25,26 @@ void creatMat()
 //Make the algorithem of FloydWarshall 
 void FloydWarshallAlgorithm()
 {
-   int temp = 0;
     for(int k=0; k<SIZE; k++)
     {
         for(int i=0; i<SIZE; i++)
         {
             for(int j=0; j<SIZE; j++)
             {
-                if(i!=j && i!=temp && j!=temp )
+                if(i!=j && mat[i][k] != 0 && mat[k][j])
                 {
-                    if((fmin(mat[i][j], mat[i][k]+mat[k][j]))!=0)
-                    {
-                        mat[i][j] = fmin(mat[i][j], mat[i][k]+mat[k][j]);
-                    }
+
+                        if (mat[i][j] == 0)
+                        {
+                            mat[i][j] = mat[i][k] + mat[k][j];
+                         }
+
+                        else 
+                        {
+                            mat[i][j] = minimum(mat[i][j], mat[i][k]+mat[k][j]);
+                         }
+                    
                 }
-       temp++;
     }
     }
 }
@@ -61,15 +66,14 @@ int shortestpath(int i, int j)
     return -1;
 }
 
-void printMat()
+int minimum(int num1, int num2)
 {
-    int temp;
-    for(int i=0; i<SIZE; i++)
-    {
-        for(int j=0; j<SIZE; j++)
-        {
-            printf("%d ", mat[i][j]);
-        }
-        printf("\n");
-    }
+    if(num1 == 0)
+        return num2;
+    if(num2 == 0)
+        return num1;
+    if(num1 > num2)
+        return num2;
+    return num1;
 }
+

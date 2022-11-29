@@ -3,7 +3,7 @@
 
 int main()
 {
-char ch =' ';
+char ch = 0;
 while(scanf("%c",&ch) != EOF && ch !='D')
 {
     if(ch == 'A')
@@ -14,23 +14,27 @@ while(scanf("%c",&ch) != EOF && ch !='D')
     if(ch == 'B')
      {
          int i,j;
-         scanf("%d%d", &i, &j);
-         if(isPath(i,j) != 0)
-             printf("True\n");
-         else
-            printf("False\n");
+         if(scanf("%d%d", &i, &j) != EOF)
+         {
+            if(isPath(i,j) != 0)
+               printf("True\n");
+            else
+             printf("False\n");
       }
+     }
 
     if(ch == 'C')
     {
          int i,j;
-         scanf("%d%d", &i, &j);
+         if(scanf("%d%d", &i, &j) != EOF)
+         {
          if(shortestpath(i,j) != -1)
-            printf("%d" , shortestpath(i,j));
-        else
+            printf("%d\n" , shortestpath(i,j));
+         else
             printf("-1\n");
+         }
     }
-    return 0;
 }
+return 0;
 }
 
