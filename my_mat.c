@@ -66,6 +66,7 @@ int shortestpath(int i, int j)
     return -1;
 }
 
+//Return the minimun between two numbers
 int minimum(int num1, int num2)
 {
     if(num1 == 0)
