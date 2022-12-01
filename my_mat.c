@@ -31,7 +31,7 @@ void FloydWarshallAlgorithm()
         {
             for(int j=0; j<SIZE; j++)
             {
-                if(i!=j && mat[i][k] != 0 && mat[k][j])
+                if(i!=j && mat[i][k] != 0 && mat[k][j] != 0)
                 {
 
                         if (mat[i][j] == 0)
@@ -41,7 +41,7 @@ void FloydWarshallAlgorithm()
 
                         else 
                         {
-                            mat[i][j] = minimum(mat[i][j], mat[i][k]+mat[k][j]);
+                            mat[i][j] = fmin(mat[i][j], mat[i][k]+mat[k][j]);
                          }
                     
                 }
@@ -65,16 +65,3 @@ int shortestpath(int i, int j)
         return mat[i][j];
     return -1;
 }
-
-//Return the minimun between two numbers
-int minimum(int num1, int num2)
-{
-    if(num1 == 0)
-        return num2;
-    if(num2 == 0)
-        return num1;
-    if(num1 > num2)
-        return num2;
-    return num1;
-}
-
